@@ -6,11 +6,12 @@ on:
       - main
   pull_request:
 
+env:
+  UV_SYSTEM_PYTHON: 1
+
 jobs:
   docs:
     runs-on: ubuntu-latest
-    env:
-      UV_SYSTEM_PYTHON: 1
     steps:
       - uses: actions/checkout@v4
       - uses: ammaraskar/sphinx-action@master
@@ -30,8 +31,6 @@ jobs:
 
   integration-test:
     runs-on: ${{ matrix.os }}
-    env:
-      UV_SYSTEM_PYTHON: 1
     strategy:
       matrix:
         os: [ubuntu-latest]
